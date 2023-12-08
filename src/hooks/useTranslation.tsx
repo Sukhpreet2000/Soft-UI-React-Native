@@ -1,4 +1,4 @@
-import i18n from 'i18n-js';
+import { I18n } from "i18n-js";
 import * as Localization from 'expo-localization';
 import Storage from '@react-native-async-storage/async-storage';
 import React, {useCallback, useContext, useEffect, useState} from 'react';
@@ -15,15 +15,17 @@ export const TranslationProvider = ({
 }) => {
   const [locale, setLocale] = useState('en');
 
+  const i18n = new I18n(translations);
+
   // Set the locale once at the beginning of your app.
-  i18n.Locales = locale;
+  i18n.locale = locale;
   // Set the key-value pairs for the different languages you want to support.
   i18n.translations = translations;
   // When a value is missing from a language it'll fallback to another language with the key present.
-  i18n.fallbacks = true;
+//   i18n.fallbacks = true;
 
   const t = useCallback(
-    (scope: i18n.Scope, options?: i18n.TranslateOptions) => {
+    (scope: I18n.Scope, options?: I18n.TranslateOptions) => {
       return i18n.t(scope, {...options, locale});
     },
     [locale],
