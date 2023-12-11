@@ -17,7 +17,7 @@ type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "Home">;
 export default function Home() {
   // Use the navigation prop type
   const navigation = useNavigation<HomeScreenNavigationProp>();
-  const {t} = useTranslation();
+  // const {t} = useTranslation();
   const [tab, setTab] = useState<number>(0);
   const {following, trending} = useData();
   const [products, setProducts] = useState(following);
@@ -35,7 +35,7 @@ export default function Home() {
     <Block>
     {/* search input */}
     <Block color={colors.card} flex={0} padding={sizes.padding}>
-      <Input search placeholder={t('common.search')} />
+      <Input search placeholder={('common.search')} />
     </Block>
 
     {/* toggle products list */}
@@ -60,7 +60,7 @@ export default function Home() {
             <Image source={assets.extras} color={colors.white} radius={0} />
           </Block>
           <Text p font={fonts?.[tab === 0 ? 'medium' : 'normal']}>
-            {t('home.following')}
+            {('home.following')}
           </Text>
         </Block>
       </Button>
@@ -89,7 +89,7 @@ export default function Home() {
             />
           </Block>
           <Text p font={fonts?.[tab === 1 ? 'medium' : 'normal']}>
-            {t('home.trending')}
+            {('home.trending')}
           </Text>
         </Block>
       </Button>
@@ -119,11 +119,12 @@ export default function Home() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "#fff",
+//     alignItems: "center",
+//     justifyContent: "center",
+//   },
+
+// });

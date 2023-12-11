@@ -3,10 +3,10 @@ import Button from './Button';
 import Input from './Input';
 import Text from './Text';
 // import Modal from './Modal';
-// import Switch from './Switch';
+import Switch from './Switch';
 // import Checkbox from './Checkbox';
 import Image from './Image';
-// import Article from './Article';
+import Article from './Article';
 import Product from './Product';
 
 export {
@@ -14,10 +14,10 @@ export {
   Button,
   Input,
   Text,
-//   Switch,
+  Switch,
 //   Checkbox,
   Image,
-//   Article,
+  Article,
   Product,
 //   Modal,
 };

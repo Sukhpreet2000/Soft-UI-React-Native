@@ -1,2 +1,2 @@
 export {default as Home} from './Home';
-export {default as Article} from './Articles';
+export {default as Articles} from './Articles';
