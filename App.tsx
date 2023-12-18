@@ -1,10 +1,11 @@
 import React from "react";
-import Screen from "./src/navigation/Screens";
+import AppNavigation from "./src/navigation/App";
+import { DataProvider } from "./src/hooks";
 
 export default function App() {
   return (
-   <Screen />
+      <DataProvider>
+        <AppNavigation />
+      </DataProvider>
   );
 }
-
-

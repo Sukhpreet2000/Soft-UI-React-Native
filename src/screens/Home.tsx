@@ -17,7 +17,7 @@ type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "Home">;
 export default function Home() {
   // Use the navigation prop type
   const navigation = useNavigation<HomeScreenNavigationProp>();
-  // const {t} = useTranslation();
+  const {t} = useTranslation();
   const [tab, setTab] = useState<number>(0);
   const {following, trending} = useData();
   const [products, setProducts] = useState(following);
@@ -60,7 +60,7 @@ export default function Home() {
             <Image source={assets.extras} color={colors.white} radius={0} />
           </Block>
           <Text p font={fonts?.[tab === 0 ? 'medium' : 'normal']}>
-            {('home.following')}
+            {t('home.following')}
           </Text>
         </Block>
       </Button>
@@ -89,7 +89,7 @@ export default function Home() {
             />
           </Block>
           <Text p font={fonts?.[tab === 1 ? 'medium' : 'normal']}>
-            {('home.trending')}
+            {t('home.trending')}
           </Text>
         </Block>
       </Button>

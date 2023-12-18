@@ -1,7 +1,7 @@
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
 import {
-  StackHeaderTitleProps,
+  StackHeaderProps,
   CardStyleInterpolators,
 } from '@react-navigation/stack';
 import {useNavigation} from '@react-navigation/core';
@@ -16,21 +16,22 @@ import Text from '../components/Text';
 import useTheme from '../hooks/useTheme';
 import Button from '../components/Button';
 import Block from '../components/Block';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 export default () => {
   const {t} = useTranslation();
   const {user} = useData();
-  const navigation = useNavigation();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const {icons, colors, gradients, sizes} = useTheme();
 
   const menu = {
-    headerStyle: {elevation: 0},
+    headerStyle: { elevation: 0 },
     headerTitleAlign: 'left',
-    headerTitleContainerStyle: {marginLeft: -sizes.sm},
-    headerLeftContainerStyle: {paddingLeft: sizes.s},
-    headerRightContainerStyle: {paddingRight: sizes.s},
+    headerTitleContainerStyle: { marginLeft: -sizes.sm },
+    headerLeftContainerStyle: { paddingLeft: sizes.s },
+    headerRightContainerStyle: { paddingRight: sizes.s },
     cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-    headerTitle: ({children}: StackHeaderTitleProps) => (
+    headerTitle: ({ children }: { children: React.ReactNode }) => (
       <Text p>{children}</Text>
     ),
     headerLeft: () => (
@@ -41,12 +42,10 @@ export default () => {
     headerRight: () => (
       <Block row flex={0} align="center" marginRight={sizes.padding}>
         <TouchableOpacity
-          style={{marginRight: sizes.sm}}
-          onPress={() =>
-            navigation.navigate('Screens', {
-              screen: 'Pro',
-            })
-          }>
+          style={{ marginRight: sizes.sm }}
+          onPress={() => navigation.navigate('Screens', {
+            screen: 'Pro',
+          })}>
           <Image source={icons.bell} radius={0} color={colors.icon} />
           <Block
             flex={0}
@@ -55,15 +54,12 @@ export default () => {
             height={sizes.s}
             radius={sizes.xs}
             position="absolute"
-            gradient={gradients?.primary}
-          />
+            gradient={gradients?.primary} />
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('Screens', {
-              screen: 'Pro',
-            })
-          }>
+          onPress={() => navigation.navigate('Screens', {
+            screen: 'Pro',
+          })}>
           <Image source={icons.basket} radius={0} color={colors.icon} />
           <Block
             flex={0}
@@ -83,10 +79,11 @@ export default () => {
         </TouchableOpacity>
       </Block>
     ),
-  } as StackHeaderOptions;
+  } as unknown as StackHeaderOptions;
 
   const options = {
-    stack: menu,
+    stack: {menu,
+      headerShown:false},
     components: {
       ...menu,
       headerTitle: () => (
