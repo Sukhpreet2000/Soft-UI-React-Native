@@ -85,6 +85,7 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
     { name: t("screens.home"), to: "Home", icon: assets.home },
     {name: t('screens.components'), to: 'Components', icon: assets.components},
     { name: t("screens.articles"), to: "Articles", icon: assets.document },
+    { name: t("screens.info"), to: "Info", icon: assets.document },
     {name: t('screens.rental'), to: 'Pro', icon: assets.rental},
     {name: t('screens.profile'), to: 'Profile', icon: assets.profile},
     {name: t('screens.settings'), to: 'Pro', icon: assets.settings},
@@ -225,6 +226,18 @@ export default () => {
         // overlayColor="transparent"
         // sceneContainerStyle={{backgroundColor: 'transparent'}}
         drawerContent={(props: any) => <DrawerContent {...props} />}
+        screenOptions={{
+          drawerType: "slide",
+          overlayColor: "transparent",
+          headerShown: false,
+          sceneContainerStyle: { backgroundColor: "transparent" },
+          drawerStyle: {
+            flex: 1,
+            width: "60%",
+            borderRightWidth: 0,
+            backgroundColor: "transparent",
+          },
+        }}
         // drawerStyle={{
         //   flex: 1,
         //   width: '60%',
